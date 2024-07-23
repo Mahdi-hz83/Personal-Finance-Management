@@ -37,7 +37,11 @@ public class Budget {
 
     public void addExpense(double amount) {
         if (amount > 0) {
-            spent += amount;
+            if (amount + spent < limit){
+                spent += amount;
+            } else{
+                throw new IllegalArgumentException("Amount exceeds limit");
+            }
         }
         else{
             throw new IllegalArgumentException("Amount must be greater than zero");
